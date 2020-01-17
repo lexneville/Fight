@@ -14,26 +14,27 @@ namespace Fight
         public Player(string name)
         {
             this.name = name;
-            this.health = 100;
-            this.mana = 100;
+            health = 100;
+            mana = 100;
         }
         public string GetName(Player player)
         {
-            return this.name;
+            return name;
         }
         public int GetHealth(Player player)
         {
-            return this.health;
+            return health;
         }
         public void TakeHealth(Player player, int healthChange)
         {
             
-             this.health -= healthChange;
+             health -= healthChange;
         }
 
         public void Heal(Player player, int healthChange)
         {
-            this.health += healthChange;
+            health += healthChange;
         }
+
     }
 }

@@ -18,22 +18,23 @@ namespace Fight
         }
         public string GetName(Enemy enemy)
         {
-            return this.name;
+            return name;
         }
         public int GetHealth(Enemy enemy)
         {
-            return this.health;
+            return health;
         }
 
         public void TakeHealth(Enemy enemy, int healthChange)
         {
 
-            this.health -= healthChange;
+            health -= healthChange;
         }
         public void Heal(Enemy enemy, int healthChange)
         {
-            this.health += healthChange;
+            health += healthChange;
         }
+
 
     }
 }
