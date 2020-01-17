@@ -11,20 +11,21 @@ namespace Fight
             Enemy Troll = new Enemy("Troll", 150, 0);
             Enemy DarkWizard = new Enemy("Dark Wizard", 100, 100);
             Enemy Wraith = new Enemy("Wraith", 50, 150);
+
             int playerRoll, enemyRoll;
 
             Random rand = new Random();
 
-            int RollDice()
+            int RollDice(int maxValue)
             {
-                return rand.Next(1, 7);
+                return rand.Next(1, maxValue);
             }
 
             Enemy currentEnemy = goblin;
             Player currentPlayer = Hero;
 
-            playerRoll = RollDice();
-            enemyRoll = RollDice();
+            playerRoll = RollDice(6);
+            enemyRoll = RollDice(6);
 
             //for (int i = 0; i < 100; i++)
             //{
@@ -35,26 +36,64 @@ namespace Fight
 
             void Fight()
             {
+                Console.WriteLine($"You encounter a {currentEnemy.GetEnemyName(currentEnemy)}");
+
                 do
                 {
-                    do
+                    Console.WriteLine("Hit a key to roll the dice!");
+                    Console.WriteLine("If you roll higher than the enemy rolls, your strike is successful");
+                    Console.ReadKey();
+                    Console.WriteLine();
+                    playerRoll = RollDice(6);
+                    enemyRoll = RollDice(6);
+
+
+
+                    // string playerChoices = "";
+
+
+
+                    if (playerRoll > enemyRoll)
                     {
-                        Console.WriteLine(currentPlayer.GetPlayerHealth(currentPlayer));
-                        currentPlayer.takePlayerHealth(currentPlayer, 10);
+                        Console.WriteLine($"{currentPlayer.GetPlayerName(currentPlayer)} has rolled {playerRoll}, the {currentEnemy.GetEnemyName(currentEnemy)} has rolled {enemyRoll}");
+                        Console.WriteLine($"{currentPlayer.GetPlayerName(currentPlayer)} wins the roll, the attack was successful!" );
+                        Console.WriteLine("Hit a key to roll a D12 for damage amount");
+                        int playerDamageRoll = RollDice(12);
+                        Console.WriteLine($"{currentEnemy.GetEnemyName(currentEnemy)}'s health has been reduced by {playerDamageRoll} HP");
+                        currentEnemy.TakeEnemyHealth(currentEnemy, playerDamageRoll);
+                        Console.WriteLine($"The {currentEnemy.GetEnemyName(currentEnemy)} now has {currentEnemy.GetEnemyHealth(currentEnemy)} HP");
+                    }
+                    else if (playerRoll < enemyRoll)
+                    {
+                        Console.WriteLine($"{currentPlayer.GetPlayerName(currentPlayer)} has rolled {playerRoll}, the {currentEnemy.GetEnemyName(currentEnemy)} has rolled {enemyRoll}");
+                        Console.WriteLine($"{currentEnemy.GetEnemyName(currentEnemy)} wins the roll, the attack was successful!");
+                        Console.WriteLine($"The {currentEnemy.GetEnemyName(currentEnemy)} rolls a D12 for damage");
+                        int enemyDamageRoll = RollDice(12);
+                        Console.WriteLine($"{currentPlayer.GetPlayerName(currentPlayer)}'s health has been reduced by {enemyDamageRoll} HP");
+                        currentPlayer.TakePlayerHealth(currentPlayer, enemyDamageRoll);
+                        Console.WriteLine($"The {currentPlayer.GetPlayerName(currentPlayer)} now has {currentPlayer.GetPlayerHealth(currentPlayer)} HP");
 
-                        Console.WriteLine(currentEnemy.GetEnemyHealth(currentEnemy));
-                        currentEnemy.takeEnemyHealth(currentEnemy, 10);
+                    }
 
-                    } while (currentPlayer.GetPlayerHealth(currentPlayer) > 0);
-                        
-
-                } while (currentEnemy.GetEnemyHealth(currentEnemy) > 0);
+                } while ((currentEnemy.GetEnemyHealth(currentEnemy) > 0) && (currentPlayer.GetPlayerHealth(currentPlayer) > 0));
 
                 Console.WriteLine("Fight over");
             }
 
             Fight();
 
+            // refactoring the round method
+
+            void Round()
+            {
+                Console.WriteLine($"{currentPlayer.GetPlayerName(currentPlayer)} has rolled {playerRoll}, the {currentEnemy.GetEnemyName(currentEnemy)} has rolled {enemyRoll}");
+                Console.WriteLine($"{currentPlayer.GetPlayerName(currentPlayer)} wins the roll, the attack was successful!");
+                Console.WriteLine("Hit a key to roll a D12 for damage amount");
+                int playerDamageRoll = RollDice(12);
+                Console.WriteLine($"{currentEnemy.GetEnemyName(currentEnemy)}'s health has been reduced by {playerDamageRoll} HP");
+                currentEnemy.TakeEnemyHealth(currentEnemy, playerDamageRoll);
+                Console.WriteLine($"The {currentEnemy.GetEnemyName(currentEnemy)} now has {currentEnemy.GetEnemyHealth(currentEnemy)} HP");
+            }
         }
 
 

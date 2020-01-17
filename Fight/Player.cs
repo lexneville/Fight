@@ -17,7 +17,10 @@ namespace Fight
             this.playerHealth = 100;
             this.playerMana = 100;
         }
-
+        public string GetPlayerName(Player player)
+        {
+            return this.playerName;
+        }
         public int GetPlayerHealth(Player player)
         {
             return this.playerHealth;
