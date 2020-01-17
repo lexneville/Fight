@@ -6,34 +6,34 @@ namespace Fight
 {
     class Player
     {
-        private string playerName { get; set; }
-        private int playerHealth { get; set; }
-        private int playerMana { get; set; }
+        private string name { get; set; }
+        private int health { get; set; }
+        private int mana { get; set; }
 
         // private List<Items> Inventory = new List<Items>();
-        public Player(string PlayerName)
+        public Player(string name)
         {
-            this.playerName = PlayerName;
-            this.playerHealth = 100;
-            this.playerMana = 100;
+            this.name = name;
+            this.health = 100;
+            this.mana = 100;
         }
-        public string GetPlayerName(Player player)
+        public string GetName(Player player)
         {
-            return this.playerName;
+            return this.name;
         }
-        public int GetPlayerHealth(Player player)
+        public int GetHealth(Player player)
         {
-            return this.playerHealth;
+            return this.health;
         }
-        public void TakePlayerHealth(Player player, int healthChange)
+        public void TakeHealth(Player player, int healthChange)
         {
             
-             this.playerHealth -= healthChange;
+             this.health -= healthChange;
         }
 
-        public void HealPlayer(Player player, int healthChange)
+        public void Heal(Player player, int healthChange)
         {
-            this.playerHealth += healthChange;
+            this.health += healthChange;
         }
     }
 }

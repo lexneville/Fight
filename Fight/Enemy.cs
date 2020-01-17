@@ -6,33 +6,33 @@ namespace Fight
 {
     class Enemy
     {
-        private string enemyName { get; set; }
-        private int enemyHealth { get; set; }
-        private int enemyMana { get; set; }
+        private string name { get; set; }
+        private int health { get; set; }
+        private int mana { get; set; }
 
-        public Enemy(string enemyName, int enemyHealth, int enemyMana)
+        public Enemy(string name, int health, int mana)
         {
-            this.enemyName = enemyName;
-            this.enemyHealth = enemyHealth;
-            this.enemyMana = enemyMana;
+            this.name = name;
+            this.health = health;
+            this.mana = mana;
         }
-        public string GetEnemyName(Enemy enemy)
+        public string GetName(Enemy enemy)
         {
-            return this.enemyName;
+            return this.name;
         }
-        public int GetEnemyHealth(Enemy enemy)
+        public int GetHealth(Enemy enemy)
         {
-            return this.enemyHealth;
+            return this.health;
         }
 
-        public void TakeEnemyHealth(Enemy enemy, int healthChange)
+        public void TakeHealth(Enemy enemy, int healthChange)
         {
 
-            this.enemyHealth -= healthChange;
+            this.health -= healthChange;
         }
-        public void HealEnemy(Enemy enemy, int healthChange)
+        public void Heal(Enemy enemy, int healthChange)
         {
-            this.enemyHealth += healthChange;
+            this.health += healthChange;
         }
 
     }
