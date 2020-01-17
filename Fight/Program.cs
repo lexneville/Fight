@@ -36,9 +36,17 @@ namespace Fight
                 return rand.Next(1, maxValue);
             };
 
+            void Potion()
+            {
+                currentPlayer.Heal(currentPlayer, 50);
+            }
+
+
             void Fight()
             {
                 Console.WriteLine($"You encounter a {enemyName}");
+                Console.WriteLine("Potion");
+                Potion();
 
 /*trade blows*/do 
                 {
@@ -63,7 +71,7 @@ namespace Fight
                     
 
 
-                    if (playerRoll >= enemyRoll)
+                    if (playerRoll > enemyRoll)
                     {
 
 
@@ -91,10 +99,10 @@ namespace Fight
                         currentPlayer.TakeHealth(currentPlayer, enemyDamageRoll);
                         HealthDisplay();
                     }
-                    //else
-                    //{
+                    else
+                    {
 
-                    //}
+                    }
 
                 } while (enemyHealth() > 0 && playerHealth() > 0);
 
