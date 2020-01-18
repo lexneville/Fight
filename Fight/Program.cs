@@ -78,9 +78,10 @@ namespace Fight
                         RollResult();
 
 
-                        Console.WriteLine($"{playerName} wins the roll, the attack was successful!");
+                        Console.WriteLine($"{playerName} wins the roll, your attack was successful!");
                         Console.WriteLine("Hit a key to roll a D20 for damage amount");
                         int playerDamageRoll = RollDice(20);
+
                         Console.WriteLine($"{enemyName}'s health has been reduced by {playerDamageRoll} HP");
                         currentEnemy.TakeHealth(currentEnemy, playerDamageRoll);
                         HealthDisplay();
@@ -92,7 +93,7 @@ namespace Fight
                         RollResult();
 
                         
-                        Console.WriteLine($"{enemyName} wins the roll, the attack was successful!");
+                        Console.WriteLine($"{enemyName} wins the roll, your attack was blocked and the {enemyName} strikes back!");
                         Console.WriteLine($"The {enemyName} rolls a D12 for damage");
                         int enemyDamageRoll = RollDice(12);
                         Console.WriteLine($"{playerName}'s health has been reduced by {enemyDamageRoll} HP");
